@@ -12,7 +12,12 @@ const TextField = (props) => {
           id={name}
           className="form-control"
           value={value}
-          onChange={(e) => setFieldValue(name, e.target.value)}
+          onChange={(e) =>
+            setFieldValue(
+              name,
+              type === "number" ? parseFloat(e.target.value) : e.target.value
+            )
+          }
         />
       </div>
     </div>

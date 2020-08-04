@@ -15,7 +15,8 @@ class TaxForm extends Component {
     setFormState(id, formValues);
   };
   render() {
-    const { formFields, onFormSubmit, index, deleteForm, id } = this.props;
+    const { formFields, deleteForm, id } = this.props;
+    const { formValues } = this.state;
     return (
       <div>
         <form className="form">
@@ -25,20 +26,13 @@ class TaxForm extends Component {
               {...field}
               setFieldValue={this.setFieldValue}
               key={field.name}
+              value={formValues[field.name]}
             />
           ))}
-          <Button
-            variant="primary"
-            type="button"
-            onClick={() => this.onFormSubmit(index)}
-          >
+          <Button variant="primary" type="button" onClick={this.onFormSubmit}>
             Submit
           </Button>
-          <Button
-            variant="danger"
-            type="button"
-            onClick={() => deleteForm(index)}
-          >
+          <Button variant="danger" type="button" onClick={() => deleteForm(id)}>
             Delete Form
           </Button>
         </form>

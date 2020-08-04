@@ -29,12 +29,9 @@ class FormWrapper extends Component {
       formsState: [...prevState.formsState, { id: uniqueId("form-") }],
     }));
   };
-  deleteForm = (index) => {
+  deleteForm = (id) => {
     this.setState((prevState) => ({
-      formsState: [
-        ...prevState.formsState.slice(0, index),
-        ...prevState.formsState.slice(index + 1),
-      ],
+      formsState: prevState.formsState.filter((form) => form.id !== id),
     }));
   };
   render() {
@@ -44,12 +41,11 @@ class FormWrapper extends Component {
       <div className="form-wrapper">
         <h5>{name}</h5>
         <div className="form-container">
-          {formsState.map((values, index) => (
+          {formsState.map((values) => (
             <TaxFrom
               formFields={formFields}
               setFormState={this.setFormState}
               deleteForm={this.deleteForm}
-              index={index}
               id={values.id}
             />
           ))}

@@ -19,10 +19,9 @@ class App extends Component {
     this.setState((prevState) => ({
       allformsState: { ...prevState.allformsState, [name]: values },
     }));
-    console.log(this.state);
   };
   render() {
-    const { showModal } = this.state;
+    const { showModal, allformsState } = this.state;
     return (
       <div className="App">
         <header className="header">
@@ -40,10 +39,13 @@ class App extends Component {
             />
           ))}
         </div>
-        <GeneratedFromModal
-          showModal={showModal}
-          toggleModal={this.toggleModal}
-        />
+        {showModal && (
+          <GeneratedFromModal
+            showModal={showModal}
+            toggleModal={this.toggleModal}
+            allformsState={allformsState}
+          />
+        )}
       </div>
     );
   }

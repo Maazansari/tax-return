@@ -4,17 +4,17 @@ const forms = [
     formFields: [
       {
         label: "Total Income",
-        name: "total-income",
+        name: "total_income",
         type: "number",
       },
       {
         label: "Total Business Expenses",
-        name: "total-business-expenses",
+        name: "total_business_expenses",
         type: "number",
       },
       {
         label: "Total Miles Driven",
-        name: "total-miles-expenses",
+        name: "total_miles_expenses",
         type: "number",
       },
     ],
@@ -25,12 +25,12 @@ const forms = [
     formFields: [
       {
         label: "Total Income",
-        name: "total-income",
+        name: "total_income",
         type: "number",
       },
       {
         label: "Total Taxes Paid",
-        name: "total-taxes-paid",
+        name: "total_taxes_paid",
         type: "number",
       },
     ],
