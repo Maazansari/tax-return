@@ -9,19 +9,19 @@ const forms = [
       },
       {
         label: "Total Business Expenses",
-        name: " total-business-expenses",
+        name: "total-business-expenses",
         type: "number",
       },
       {
         label: "Total Miles Driven",
-        name: " total-miles-expenses",
+        name: "total-miles-expenses",
         type: "number",
       },
     ],
   },
 
   {
-    name: "Form 1040",
+    name: "Form W-2",
     formFields: [
       {
         label: "Total Income",

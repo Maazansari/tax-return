@@ -9,13 +9,17 @@ class TaxForm extends Component {
       formValues: { ...prevState.formValues, [name]: value },
     }));
   };
-  onFormSubmit = () => {};
+  onFormSubmit = () => {
+    const { id, setFormState } = this.props;
+    const { formValues } = this.state;
+    setFormState(id, formValues);
+  };
   render() {
-    const { formFields, onFormSubmit, index, deleteForm } = this.props;
+    const { formFields, onFormSubmit, index, deleteForm, id } = this.props;
     return (
       <div>
         <form className="form">
-          <h6>{`#${index + 1}`}</h6>
+          <h6>{`ID: #${id}`}</h6>
           {formFields.map((field) => (
             <TextField
               {...field}
@@ -26,7 +30,7 @@ class TaxForm extends Component {
           <Button
             variant="primary"
             type="button"
-            onClick={() => onFormSubmit(index)}
+            onClick={() => this.onFormSubmit(index)}
           >
             Submit
           </Button>

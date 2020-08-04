@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 class GeneratedForm extends Component {
   render() {
-    console.log(this.props);
     const { name, formFields } = this.props;
     return (
       <div className="generated-form">

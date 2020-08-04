@@ -1,43 +1,56 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
-
+import uniqueId from "lodash.uniqueid";
 import TaxFrom from "./tax-form";
 
 class FormWrapper extends Component {
   state = {
-    formValues: [{}],
+    formsState: [{ id: uniqueId("form-"), values: {} }],
   };
 
-  onFormSubmit = () => {
-    console.log(this.state.formValues);
+  setFormState = (id, values) => {
+    this.setState(
+      (prevState) => ({
+        formsState: prevState.formsState.map((state) =>
+          state.id === id ? { ...state, values: values } : state
+        ),
+      }),
+      this.setFormsValuesIntoParentState
+    );
+  };
+
+  setFormsValuesIntoParentState = () => {
+    const { setFormsStateByType, name } = this.props;
+    const { formsState } = this.state;
+    setFormsStateByType(name, formsState);
   };
   addForm = () => {
     this.setState((prevState) => ({
-      formValues: [...prevState.formValues, {}],
+      formsState: [...prevState.formsState, { id: uniqueId("form-") }],
     }));
   };
   deleteForm = (index) => {
     this.setState((prevState) => ({
-      formValues: [
-        ...prevState.formValues.slice(0, index),
-        ...prevState.formValues.slice(index + 1),
+      formsState: [
+        ...prevState.formsState.slice(0, index),
+        ...prevState.formsState.slice(index + 1),
       ],
     }));
   };
   render() {
     const { name, formFields } = this.props;
-    const { formValues } = this.state;
+    const { formsState } = this.state;
     return (
       <div className="form-wrapper">
         <h5>{name}</h5>
-
         <div className="form-container">
-          {formValues.map((values, index) => (
+          {formsState.map((values, index) => (
             <TaxFrom
               formFields={formFields}
-              onFormSubmit={this.onFormSubmit}
+              setFormState={this.setFormState}
               deleteForm={this.deleteForm}
               index={index}
+              id={values.id}
             />
           ))}
         </div>

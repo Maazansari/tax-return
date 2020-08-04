@@ -10,9 +10,16 @@ import "./App.scss";
 class App extends Component {
   state = {
     showModal: false,
+    allformsState: {},
   };
   toggleModal = (showModal) => {
     this.setState({ showModal });
+  };
+  setFormsStateByType = (name, values) => {
+    this.setState((prevState) => ({
+      allformsState: { ...prevState.allformsState, [name]: values },
+    }));
+    console.log(this.state);
   };
   render() {
     const { showModal } = this.state;
@@ -26,7 +33,11 @@ class App extends Component {
         </header>
         <div className="body">
           {forms.map((form) => (
-            <FormWrapper {...form} key={form.name} />
+            <FormWrapper
+              {...form}
+              key={form.name}
+              setFormsStateByType={this.setFormsStateByType}
+            />
           ))}
         </div>
         <GeneratedFromModal
