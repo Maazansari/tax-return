@@ -47,6 +47,7 @@ class FormWrapper extends Component {
               setFormState={this.setFormState}
               deleteForm={this.deleteForm}
               id={values.id}
+              key={values.id}
             />
           ))}
         </div>

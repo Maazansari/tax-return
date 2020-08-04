@@ -38,6 +38,11 @@ const formsApiResponse = [
         name: "total-taxes-paid",
         value: 200.2,
       },
+      {
+        label: "Total Taxable Income",
+        name: "total-taxable-income",
+        value: 79,
+      },
     ],
   },
   {
@@ -53,6 +58,11 @@ const formsApiResponse = [
         name: "total-taxes-paid",
         value: 200.2,
       },
+      {
+        label: "Total Taxable Income",
+        name: "total-taxable-income",
+        value: 79,
+      },
     ],
   },
 
@@ -60,14 +70,24 @@ const formsApiResponse = [
     name: "Form 1040",
     formFields: [
       {
-        label: "Total Income",
-        name: "total-income",
+        label: "Total Taxable Income",
+        name: "total-taxable-income",
         value: 200.2,
       },
       {
-        label: "Total Taxes Paid",
+        label: "Total Tax Paid",
+        name: "total-tax-paid",
+        value: 100.2,
+      },
+      {
+        label: "Total Tax Liability",
+        name: "total-tax-liability",
+        value: 50.2,
+      },
+      {
+        label: "Tax Difference",
         name: "total-taxes-paid",
-        value: 200.2,
+        value: 40.2,
       },
     ],
   },

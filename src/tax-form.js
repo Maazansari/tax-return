@@ -20,7 +20,7 @@ class TaxForm extends Component {
     return (
       <div>
         <form className="form">
-          <h6>{`ID: #${id}`}</h6>
+          {id && <h6>{`ID: #${id}`}</h6>}
           {formFields.map((field) => (
             <TextField
               {...field}
