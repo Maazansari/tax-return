@@ -64,11 +64,11 @@ class AddNewFormModal extends Component {
     addNewForm(this.state.formObject);
   };
   render() {
-    const { toggleModal } = this.props;
+    const { showModal, toggleModal } = this.props;
     const { formObject } = this.state;
 
     return (
-      <Modal show={true} className="modal">
+      <Modal show={showModal} className="modal">
         <div className="new-form-modal">
           <form className="form">
             <header className="custom-modal-header">

@@ -10,29 +10,27 @@ import "./App.scss";
 
 class App extends Component {
   state = {
-    showModal: false,
+    showgeneratedFormModal: false,
     showNewFormModal: false,
-    allformsState: {},
     forms: forms,
   };
-  toggleModal = (showModal) => {
-    this.setState({ showModal });
+  toggleModal = (showgeneratedFormModal) => {
+    this.setState({ showgeneratedFormModal });
   };
   toggleNewFormModal = (showNewFormModal) => {
     this.setState({ showNewFormModal });
   };
-  setFormsStateByType = (name, values) => {
-    this.setState((prevState) => ({
-      allformsState: { ...prevState.allformsState, [name]: values },
-    }));
-  };
-
   addNewForm = (form) => {
     this.setState((prevState) => ({ forms: [...prevState.forms, form] }));
     this.toggleNewFormModal(false);
   };
   render() {
-    const { showModal, allformsState, forms, showNewFormModal } = this.state;
+    const {
+      showgeneratedFormModal,
+      allformsState,
+      forms,
+      showNewFormModal,
+    } = this.state;
     return (
       <div className="App">
         <header className="header">
@@ -46,26 +44,21 @@ class App extends Component {
         </header>
         <div className="body">
           {forms.map((form) => (
-            <FormWrapper
-              {...form}
-              key={form.name}
-              setFormsStateByType={this.setFormsStateByType}
-            />
+            <FormWrapper {...form} key={form.name} />
           ))}
         </div>
-        {showModal && (
-          <GeneratedFromModal
-            showModal={showModal}
-            toggleModal={this.toggleModal}
-            allformsState={allformsState}
-          />
-        )}
-        {showNewFormModal && (
-          <CreateFormModal
-            addNewForm={this.addNewForm}
-            toggleModal={this.toggleNewFormModal}
-          />
-        )}
+
+        <GeneratedFromModal
+          showModal={showgeneratedFormModal}
+          toggleModal={this.toggleModal}
+          allformsState={allformsState}
+        />
+
+        <CreateFormModal
+          addNewForm={this.addNewForm}
+          toggleModal={this.toggleNewFormModal}
+          showModal={showNewFormModal}
+        />
       </div>
     );
   }

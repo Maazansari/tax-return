@@ -8,17 +8,6 @@ class FormWrapper extends Component {
     formsState: [{ id: uniqueId("form-"), values: {} }],
   };
 
-  setFormState = (id, values) => {
-    this.setState(
-      (prevState) => ({
-        formsState: prevState.formsState.map((state) =>
-          state.id === id ? { ...state, values: values } : state
-        ),
-      }),
-      this.setFormsValuesIntoParentState
-    );
-  };
-
   setFormsValuesIntoParentState = () => {
     const { setFormsStateByType, name } = this.props;
     const { formsState } = this.state;
@@ -44,7 +33,6 @@ class FormWrapper extends Component {
           {formsState.map((values) => (
             <TaxFrom
               formFields={formFields}
-              setFormState={this.setFormState}
               deleteForm={this.deleteForm}
               id={values.id}
               key={values.id}

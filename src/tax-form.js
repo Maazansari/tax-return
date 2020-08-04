@@ -13,10 +13,7 @@ class TaxForm extends Component {
     }));
   };
   onFormSubmit = () => {
-    const { id, setFormState } = this.props;
-    const { formValues } = this.state;
     this.setState({ submitted: true });
-    setFormState(id, formValues);
   };
   render() {
     const { formFields, deleteForm, id } = this.props;
