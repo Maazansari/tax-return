@@ -7,12 +7,6 @@ class FormWrapper extends Component {
   state = {
     formsState: [{ id: uniqueId("form-"), values: {} }],
   };
-
-  setFormsValuesIntoParentState = () => {
-    const { setFormsStateByType, name } = this.props;
-    const { formsState } = this.state;
-    setFormsStateByType(name, formsState);
-  };
   addForm = () => {
     this.setState((prevState) => ({
       formsState: [...prevState.formsState, { id: uniqueId("form-") }],

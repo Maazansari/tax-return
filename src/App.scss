@@ -10,6 +10,9 @@
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .custom-modal-header {
@@ -61,7 +64,7 @@
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 65px;
     height: fit-content;
     label {
       float: left;

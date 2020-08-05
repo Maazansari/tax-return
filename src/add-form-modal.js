@@ -10,7 +10,7 @@ import closeIcon from "./images/close.svg";
 class AddNewFormModal extends Component {
   state = {
     formObject: {
-      name: "Form 1099",
+      name: "New Form",
       formFields: [
         {
           id: uniqueId("field-"),
@@ -48,9 +48,9 @@ class AddNewFormModal extends Component {
     const { formFields } = formObject;
     const fieldObject = {
       id: uniqueId("field-"),
-      label: "",
-      name: "",
-      type: "",
+      label: "Default",
+      name: "default",
+      type: "number",
     };
     this.setState((prevState) => ({
       formObject: {
@@ -66,7 +66,11 @@ class AddNewFormModal extends Component {
   render() {
     const { showModal, toggleModal } = this.props;
     const { formObject } = this.state;
-
+    const fieldArrya = [
+      { label: "Field Label", name: "label", type: "text" },
+      { label: "Field Name", name: "name", type: "text" },
+      { label: "Field Type", name: "type", type: "text" },
+    ];
     return (
       <Modal show={showModal} className="modal">
         <div className="new-form-modal">
@@ -84,28 +88,19 @@ class AddNewFormModal extends Component {
               label={"Form Name"}
               name={"form_name"}
               type="text"
+              value={formObject.name}
               setFieldValue={this.setFormName}
             />
-            {formObject.formFields.map((field, index) => (
-              <div className="fields-container" key={field.id}>
-                <TextField
-                  label={"Field Label"}
-                  name={"label"}
-                  type="text"
-                  setFieldValue={curry(this.setFormFieldsValue, 3)(index)}
-                />
-                <TextField
-                  label={"Field Name"}
-                  name={"name"}
-                  type="text"
-                  setFieldValue={curry(this.setFormFieldsValue, 3)(index)}
-                />
-                <TextField
-                  label={"Field Type"}
-                  name={"type"}
-                  type="text"
-                  setFieldValue={curry(this.setFormFieldsValue, 3)(index)}
-                />
+            {formObject.formFields.map((formField, index) => (
+              <div className="fields-container" key={formField.id}>
+                {fieldArrya.map((field) => (
+                  <TextField
+                    {...field}
+                    value={formField[field.name]}
+                    setFieldValue={curry(this.setFormFieldsValue, 3)(index)}
+                    key={field.name}
+                  />
+                ))}
               </div>
             ))}
             <Button variant="primary" type="button" onClick={this.addField}>

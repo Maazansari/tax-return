@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import uniqueId from "lodash.uniqueid";
 
 import Modal from "react-bootstrap/Modal";
 import GeneratedForm from "./generated-form";
@@ -21,7 +22,7 @@ class GeneratedFormModal extends Component {
           </header>
 
           {mockResponse.map((item) => (
-            <GeneratedForm {...item} />
+            <GeneratedForm {...item} key={uniqueId("generatedForm_")} />
           ))}
         </div>
       </Modal>

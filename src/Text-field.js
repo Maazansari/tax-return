@@ -11,7 +11,7 @@ const TextField = (props) => {
           type={type || "number"}
           id={name}
           className="form-control"
-          value={value}
+          value={value || ""}
           onChange={(e) =>
             setFieldValue(
               name,
