@@ -31,15 +31,21 @@ class App extends Component {
       forms,
       showNewFormModal,
     } = this.state;
+    const { isAdmin } = this.props;
     return (
       <div className="App">
         <header className="header">
           <h3>Tax Return Application</h3>
+          {isAdmin && (
+            <Button
+              variant="info"
+              onClick={() => this.toggleNewFormModal(true)}
+            >
+              Add New Form
+            </Button>
+          )}
           <Button variant="info" onClick={() => this.toggleModal(true)}>
             View Tax Return
-          </Button>
-          <Button variant="info" onClick={() => this.toggleNewFormModal(true)}>
-            Add New Form
           </Button>
         </header>
         <div className="body">
